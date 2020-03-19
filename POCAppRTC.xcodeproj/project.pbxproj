@@ -1,0 +1,690 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		323E0AAF23FD0BA100B6DC46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E0AAE23FD0BA100B6DC46 /* AppDelegate.swift */; };
+		323E0AB123FD0BA100B6DC46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E0AB023FD0BA100B6DC46 /* SceneDelegate.swift */; };
+		323E0AB323FD0BA100B6DC46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E0AB223FD0BA100B6DC46 /* ViewController.swift */; };
+		323E0AB623FD0BA100B6DC46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323E0AB423FD0BA100B6DC46 /* Main.storyboard */; };
+		323E0AB823FD0BA500B6DC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323E0AB723FD0BA500B6DC46 /* Assets.xcassets */; };
+		323E0ABB23FD0BA500B6DC46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323E0AB923FD0BA500B6DC46 /* LaunchScreen.storyboard */; };
+		324B845E24208B5600878B6F /* JSWebModule.js in Resources */ = {isa = PBXBuildFile; fileRef = 324B845D24208B5600878B6F /* JSWebModule.js */; };
+		3256F9C2241F808C008BA874 /* CDVPluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3256F9C1241F808B008BA874 /* CDVPluginResult.m */; };
+		3256F9C8241F8333008BA874 /* CDVInvokedUrlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3256F9C7241F8333008BA874 /* CDVInvokedUrlCommand.m */; };
+		326E5698241B54DF00E1480D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326E5697241B54DF00E1480D /* WebViewController.m */; };
+		32925D7E2421F38D009C5841 /* POCAppRTCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32925D7D2421F38D009C5841 /* POCAppRTCTests.swift */; };
+		32925D872421F3C6009C5841 /* WebViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 32925D862421F3C6009C5841 /* WebViewControllerTest.m */; };
+		32925D892422A30C009C5841 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32925D882422A30C009C5841 /* Util.swift */; };
+		3297D048242362140055A79A /* ViewController+RTCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297D047242362140055A79A /* ViewController+RTCExtensions.swift */; };
+		329F4ED2241F5CEE002170FE /* cordova-plugin-iosrtc-fork.js in Resources */ = {isa = PBXBuildFile; fileRef = 329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc-fork.js */; };
+		329F4ED4241F64E2002170FE /* MicrosoftTeams.js in Resources */ = {isa = PBXBuildFile; fileRef = 329F4ED3241F64E2002170FE /* MicrosoftTeams.js */; };
+		329F4EE6241F6A61002170FE /* PluginRTCDataChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4ED6241F6A5F002170FE /* PluginRTCDataChannel.swift */; };
+		329F4EE8241F6A61002170FE /* PluginRTCVideoCaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4ED8241F6A60002170FE /* PluginRTCVideoCaptureController.swift */; };
+		329F4EE9241F6A61002170FE /* PluginEnumerateDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EDA241F6A60002170FE /* PluginEnumerateDevices.swift */; };
+		329F4EEA241F6A61002170FE /* PluginMediaStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EDB241F6A60002170FE /* PluginMediaStream.swift */; };
+		329F4EEB241F6A61002170FE /* PluginRTCPeerConnectionConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EDC241F6A60002170FE /* PluginRTCPeerConnectionConstraints.swift */; };
+		329F4EEC241F6A61002170FE /* PluginGetUserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EDD241F6A60002170FE /* PluginGetUserMedia.swift */; };
+		329F4EED241F6A61002170FE /* PluginRTCTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EDE241F6A60002170FE /* PluginRTCTypes.swift */; };
+		329F4EEE241F6A61002170FE /* PluginRTCAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EDF241F6A60002170FE /* PluginRTCAudioController.swift */; };
+		329F4EEF241F6A61002170FE /* PluginRTCPeerConnectionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EE0241F6A60002170FE /* PluginRTCPeerConnectionConfig.swift */; };
+		329F4EF0241F6A61002170FE /* PluginUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EE1241F6A60002170FE /* PluginUtils.swift */; };
+		329F4EF1241F6A61002170FE /* PluginRTCDTMFSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EE2241F6A60002170FE /* PluginRTCDTMFSender.swift */; };
+		329F4EF2241F6A61002170FE /* PluginRTCPeerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EE3241F6A60002170FE /* PluginRTCPeerConnection.swift */; };
+		329F4EF3241F6A61002170FE /* PluginMediaStreamRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EE4241F6A61002170FE /* PluginMediaStreamRenderer.swift */; };
+		329F4EF4241F6A61002170FE /* PluginMediaStreamTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F4EE5241F6A61002170FE /* PluginMediaStreamTrack.swift */; };
+		39E69E47FDF7679B3EA32623 /* Pods_POCAppRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E675379B22F8A193814278 /* Pods_POCAppRTC.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		32925D802421F38D009C5841 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 323E0AA323FD0BA100B6DC46 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 323E0AAA23FD0BA100B6DC46;
+			remoteInfo = POCAppRTC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		320DB93A2418D48A00469ACC /* POCAppRTC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "POCAppRTC-Bridging-Header.h"; sourceTree = "<group>"; };
+		323E0AAB23FD0BA100B6DC46 /* POCAppRTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POCAppRTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		323E0AAE23FD0BA100B6DC46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		323E0AB023FD0BA100B6DC46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		323E0AB223FD0BA100B6DC46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		323E0AB523FD0BA100B6DC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		323E0AB723FD0BA500B6DC46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		323E0ABA23FD0BA500B6DC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		323E0ABC23FD0BA500B6DC46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		324B845D24208B5600878B6F /* JSWebModule.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = JSWebModule.js; sourceTree = "<group>"; };
+		3256F9C1241F808B008BA874 /* CDVPluginResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVPluginResult.m; sourceTree = "<group>"; };
+		3256F9C4241F8143008BA874 /* CDVPluginResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVPluginResult.h; sourceTree = "<group>"; };
+		3256F9C6241F8333008BA874 /* CDVInvokedUrlCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVInvokedUrlCommand.h; sourceTree = "<group>"; };
+		3256F9C7241F8333008BA874 /* CDVInvokedUrlCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVInvokedUrlCommand.m; sourceTree = "<group>"; };
+		326E5696241B549700E1480D /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		326E5697241B54DF00E1480D /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		32925D7B2421F38D009C5841 /* POCAppRTCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = POCAppRTCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		32925D7D2421F38D009C5841 /* POCAppRTCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POCAppRTCTests.swift; sourceTree = "<group>"; };
+		32925D7F2421F38D009C5841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32925D852421F3C5009C5841 /* POCAppRTCTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "POCAppRTCTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		32925D862421F3C6009C5841 /* WebViewControllerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewControllerTest.m; sourceTree = "<group>"; };
+		32925D882422A30C009C5841 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		3297D047242362140055A79A /* ViewController+RTCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+RTCExtensions.swift"; sourceTree = "<group>"; };
+		329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc-fork.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "cordova-plugin-iosrtc-fork.js"; sourceTree = "<group>"; };
+		329F4ED3241F64E2002170FE /* MicrosoftTeams.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = MicrosoftTeams.js; sourceTree = "<group>"; };
+		329F4ED6241F6A5F002170FE /* PluginRTCDataChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCDataChannel.swift; sourceTree = "<group>"; };
+		329F4ED8241F6A60002170FE /* PluginRTCVideoCaptureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCVideoCaptureController.swift; sourceTree = "<group>"; };
+		329F4EDA241F6A60002170FE /* PluginEnumerateDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginEnumerateDevices.swift; sourceTree = "<group>"; };
+		329F4EDB241F6A60002170FE /* PluginMediaStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginMediaStream.swift; sourceTree = "<group>"; };
+		329F4EDC241F6A60002170FE /* PluginRTCPeerConnectionConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCPeerConnectionConstraints.swift; sourceTree = "<group>"; };
+		329F4EDD241F6A60002170FE /* PluginGetUserMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginGetUserMedia.swift; sourceTree = "<group>"; };
+		329F4EDE241F6A60002170FE /* PluginRTCTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCTypes.swift; sourceTree = "<group>"; };
+		329F4EDF241F6A60002170FE /* PluginRTCAudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCAudioController.swift; sourceTree = "<group>"; };
+		329F4EE0241F6A60002170FE /* PluginRTCPeerConnectionConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCPeerConnectionConfig.swift; sourceTree = "<group>"; };
+		329F4EE1241F6A60002170FE /* PluginUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginUtils.swift; sourceTree = "<group>"; };
+		329F4EE2241F6A60002170FE /* PluginRTCDTMFSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCDTMFSender.swift; sourceTree = "<group>"; };
+		329F4EE3241F6A60002170FE /* PluginRTCPeerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginRTCPeerConnection.swift; sourceTree = "<group>"; };
+		329F4EE4241F6A61002170FE /* PluginMediaStreamRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginMediaStreamRenderer.swift; sourceTree = "<group>"; };
+		329F4EE5241F6A61002170FE /* PluginMediaStreamTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginMediaStreamTrack.swift; sourceTree = "<group>"; };
+		32E3FCD32410DB6A00C5A2D4 /* JSCameraKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JSCameraKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		971DEE0B0561FB72B7806D3F /* Pods-POCAppRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POCAppRTC.release.xcconfig"; path = "Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC.release.xcconfig"; sourceTree = "<group>"; };
+		B4E675379B22F8A193814278 /* Pods_POCAppRTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POCAppRTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F22A2CDDA9DF1F236858271D /* Pods-POCAppRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POCAppRTC.debug.xcconfig"; path = "Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		323E0AA823FD0BA100B6DC46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39E69E47FDF7679B3EA32623 /* Pods_POCAppRTC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32925D782421F38D009C5841 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		323E0AA223FD0BA100B6DC46 = {
+			isa = PBXGroup;
+			children = (
+				323E0AAD23FD0BA100B6DC46 /* POCAppRTC */,
+				32925D7C2421F38D009C5841 /* POCAppRTCTests */,
+				323E0AAC23FD0BA100B6DC46 /* Products */,
+				32E3FCD22410DB6A00C5A2D4 /* Frameworks */,
+				82C68631F05BA877608D7ECF /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		323E0AAC23FD0BA100B6DC46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				323E0AAB23FD0BA100B6DC46 /* POCAppRTC.app */,
+				32925D7B2421F38D009C5841 /* POCAppRTCTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		323E0AAD23FD0BA100B6DC46 /* POCAppRTC */ = {
+			isa = PBXGroup;
+			children = (
+				329F4ED5241F69BE002170FE /* Cordova */,
+				323E0AAE23FD0BA100B6DC46 /* AppDelegate.swift */,
+				323E0AB023FD0BA100B6DC46 /* SceneDelegate.swift */,
+				323E0AB223FD0BA100B6DC46 /* ViewController.swift */,
+				3297D047242362140055A79A /* ViewController+RTCExtensions.swift */,
+				32925D882422A30C009C5841 /* Util.swift */,
+				329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc-fork.js */,
+				329F4ED3241F64E2002170FE /* MicrosoftTeams.js */,
+				324B845D24208B5600878B6F /* JSWebModule.js */,
+				326E5696241B549700E1480D /* WebViewController.h */,
+				326E5697241B54DF00E1480D /* WebViewController.m */,
+				323E0AB423FD0BA100B6DC46 /* Main.storyboard */,
+				323E0AB723FD0BA500B6DC46 /* Assets.xcassets */,
+				323E0AB923FD0BA500B6DC46 /* LaunchScreen.storyboard */,
+				323E0ABC23FD0BA500B6DC46 /* Info.plist */,
+				320DB93A2418D48A00469ACC /* POCAppRTC-Bridging-Header.h */,
+			);
+			path = POCAppRTC;
+			sourceTree = "<group>";
+		};
+		3256F9CE241F886A008BA874 /* CordovaLib */ = {
+			isa = PBXGroup;
+			children = (
+				3256F9C6241F8333008BA874 /* CDVInvokedUrlCommand.h */,
+				3256F9C7241F8333008BA874 /* CDVInvokedUrlCommand.m */,
+				3256F9C4241F8143008BA874 /* CDVPluginResult.h */,
+				3256F9C1241F808B008BA874 /* CDVPluginResult.m */,
+			);
+			path = CordovaLib;
+			sourceTree = "<group>";
+		};
+		32925D7C2421F38D009C5841 /* POCAppRTCTests */ = {
+			isa = PBXGroup;
+			children = (
+				32925D7D2421F38D009C5841 /* POCAppRTCTests.swift */,
+				32925D862421F3C6009C5841 /* WebViewControllerTest.m */,
+				32925D7F2421F38D009C5841 /* Info.plist */,
+				32925D852421F3C5009C5841 /* POCAppRTCTests-Bridging-Header.h */,
+			);
+			path = POCAppRTCTests;
+			sourceTree = "<group>";
+		};
+		329F4ED5241F69BE002170FE /* Cordova */ = {
+			isa = PBXGroup;
+			children = (
+				3256F9CE241F886A008BA874 /* CordovaLib */,
+				329F4EDA241F6A60002170FE /* PluginEnumerateDevices.swift */,
+				329F4EDD241F6A60002170FE /* PluginGetUserMedia.swift */,
+				329F4EDB241F6A60002170FE /* PluginMediaStream.swift */,
+				329F4EE4241F6A61002170FE /* PluginMediaStreamRenderer.swift */,
+				329F4EE5241F6A61002170FE /* PluginMediaStreamTrack.swift */,
+				329F4EDF241F6A60002170FE /* PluginRTCAudioController.swift */,
+				329F4ED6241F6A5F002170FE /* PluginRTCDataChannel.swift */,
+				329F4EE2241F6A60002170FE /* PluginRTCDTMFSender.swift */,
+				329F4EE3241F6A60002170FE /* PluginRTCPeerConnection.swift */,
+				329F4EE0241F6A60002170FE /* PluginRTCPeerConnectionConfig.swift */,
+				329F4EDC241F6A60002170FE /* PluginRTCPeerConnectionConstraints.swift */,
+				329F4EDE241F6A60002170FE /* PluginRTCTypes.swift */,
+				329F4ED8241F6A60002170FE /* PluginRTCVideoCaptureController.swift */,
+				329F4EE1241F6A60002170FE /* PluginUtils.swift */,
+			);
+			path = Cordova;
+			sourceTree = "<group>";
+		};
+		32E3FCD22410DB6A00C5A2D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32E3FCD32410DB6A00C5A2D4 /* JSCameraKit.framework */,
+				B4E675379B22F8A193814278 /* Pods_POCAppRTC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82C68631F05BA877608D7ECF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F22A2CDDA9DF1F236858271D /* Pods-POCAppRTC.debug.xcconfig */,
+				971DEE0B0561FB72B7806D3F /* Pods-POCAppRTC.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		323E0AAA23FD0BA100B6DC46 /* POCAppRTC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 323E0ABF23FD0BA500B6DC46 /* Build configuration list for PBXNativeTarget "POCAppRTC" */;
+			buildPhases = (
+				5BBCD69BA6677FD7899D304E /* [CP] Check Pods Manifest.lock */,
+				323E0AA723FD0BA100B6DC46 /* Sources */,
+				323E0AA823FD0BA100B6DC46 /* Frameworks */,
+				323E0AA923FD0BA100B6DC46 /* Resources */,
+				023183AE2F5943B7AC6115B4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = POCAppRTC;
+			productName = POCAppRTC;
+			productReference = 323E0AAB23FD0BA100B6DC46 /* POCAppRTC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		32925D7A2421F38D009C5841 /* POCAppRTCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32925D822421F38D009C5841 /* Build configuration list for PBXNativeTarget "POCAppRTCTests" */;
+			buildPhases = (
+				32925D772421F38D009C5841 /* Sources */,
+				32925D782421F38D009C5841 /* Frameworks */,
+				32925D792421F38D009C5841 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32925D812421F38D009C5841 /* PBXTargetDependency */,
+			);
+			name = POCAppRTCTests;
+			productName = POCAppRTCTests;
+			productReference = 32925D7B2421F38D009C5841 /* POCAppRTCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		323E0AA323FD0BA100B6DC46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					323E0AAA23FD0BA100B6DC46 = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
+					32925D7A2421F38D009C5841 = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+						TestTargetID = 323E0AAA23FD0BA100B6DC46;
+					};
+				};
+			};
+			buildConfigurationList = 323E0AA623FD0BA100B6DC46 /* Build configuration list for PBXProject "POCAppRTC" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 323E0AA223FD0BA100B6DC46;
+			productRefGroup = 323E0AAC23FD0BA100B6DC46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				323E0AAA23FD0BA100B6DC46 /* POCAppRTC */,
+				32925D7A2421F38D009C5841 /* POCAppRTCTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		323E0AA923FD0BA100B6DC46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323E0ABB23FD0BA500B6DC46 /* LaunchScreen.storyboard in Resources */,
+				324B845E24208B5600878B6F /* JSWebModule.js in Resources */,
+				329F4ED4241F64E2002170FE /* MicrosoftTeams.js in Resources */,
+				323E0AB823FD0BA500B6DC46 /* Assets.xcassets in Resources */,
+				329F4ED2241F5CEE002170FE /* cordova-plugin-iosrtc-fork.js in Resources */,
+				323E0AB623FD0BA100B6DC46 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32925D792421F38D009C5841 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		023183AE2F5943B7AC6115B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BBCD69BA6677FD7899D304E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-POCAppRTC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		323E0AA723FD0BA100B6DC46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3297D048242362140055A79A /* ViewController+RTCExtensions.swift in Sources */,
+				3256F9C2241F808C008BA874 /* CDVPluginResult.m in Sources */,
+				3256F9C8241F8333008BA874 /* CDVInvokedUrlCommand.m in Sources */,
+				329F4EF4241F6A61002170FE /* PluginMediaStreamTrack.swift in Sources */,
+				329F4EF3241F6A61002170FE /* PluginMediaStreamRenderer.swift in Sources */,
+				329F4EF0241F6A61002170FE /* PluginUtils.swift in Sources */,
+				329F4EED241F6A61002170FE /* PluginRTCTypes.swift in Sources */,
+				329F4EEC241F6A61002170FE /* PluginGetUserMedia.swift in Sources */,
+				329F4EF2241F6A61002170FE /* PluginRTCPeerConnection.swift in Sources */,
+				323E0AB323FD0BA100B6DC46 /* ViewController.swift in Sources */,
+				329F4EEB241F6A61002170FE /* PluginRTCPeerConnectionConstraints.swift in Sources */,
+				329F4EEE241F6A61002170FE /* PluginRTCAudioController.swift in Sources */,
+				323E0AAF23FD0BA100B6DC46 /* AppDelegate.swift in Sources */,
+				329F4EE6241F6A61002170FE /* PluginRTCDataChannel.swift in Sources */,
+				329F4EF1241F6A61002170FE /* PluginRTCDTMFSender.swift in Sources */,
+				32925D892422A30C009C5841 /* Util.swift in Sources */,
+				323E0AB123FD0BA100B6DC46 /* SceneDelegate.swift in Sources */,
+				329F4EE8241F6A61002170FE /* PluginRTCVideoCaptureController.swift in Sources */,
+				329F4EEA241F6A61002170FE /* PluginMediaStream.swift in Sources */,
+				326E5698241B54DF00E1480D /* WebViewController.m in Sources */,
+				329F4EEF241F6A61002170FE /* PluginRTCPeerConnectionConfig.swift in Sources */,
+				329F4EE9241F6A61002170FE /* PluginEnumerateDevices.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32925D772421F38D009C5841 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32925D7E2421F38D009C5841 /* POCAppRTCTests.swift in Sources */,
+				32925D872421F3C6009C5841 /* WebViewControllerTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		32925D812421F38D009C5841 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 323E0AAA23FD0BA100B6DC46 /* POCAppRTC */;
+			targetProxy = 32925D802421F38D009C5841 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		323E0AB423FD0BA100B6DC46 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				323E0AB523FD0BA100B6DC46 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		323E0AB923FD0BA500B6DC46 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				323E0ABA23FD0BA500B6DC46 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		323E0ABD23FD0BA500B6DC46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		323E0ABE23FD0BA500B6DC46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		323E0AC023FD0BA500B6DC46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F22A2CDDA9DF1F236858271D /* Pods-POCAppRTC.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = UBF8T346G9;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/POCAppRTC",
+				);
+				INFOPLIST_FILE = POCAppRTC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "TeamSpace Development";
+				SWIFT_OBJC_BRIDGING_HEADER = "POCAppRTC/POCAppRTC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		323E0AC123FD0BA500B6DC46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 971DEE0B0561FB72B7806D3F /* Pods-POCAppRTC.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = UBF8T346G9;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/POCAppRTC",
+				);
+				INFOPLIST_FILE = POCAppRTC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "TeamSpace Development";
+				SWIFT_OBJC_BRIDGING_HEADER = "POCAppRTC/POCAppRTC-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		32925D832421F38D009C5841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 67CM89GY47;
+				INFOPLIST_FILE = POCAppRTCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace.POCAppRTCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "POCAppRTCTests/POCAppRTCTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/POCAppRTC.app/POCAppRTC";
+			};
+			name = Debug;
+		};
+		32925D842421F38D009C5841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 67CM89GY47;
+				INFOPLIST_FILE = POCAppRTCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace.POCAppRTCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "POCAppRTCTests/POCAppRTCTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/POCAppRTC.app/POCAppRTC";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		323E0AA623FD0BA100B6DC46 /* Build configuration list for PBXProject "POCAppRTC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				323E0ABD23FD0BA500B6DC46 /* Debug */,
+				323E0ABE23FD0BA500B6DC46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		323E0ABF23FD0BA500B6DC46 /* Build configuration list for PBXNativeTarget "POCAppRTC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				323E0AC023FD0BA500B6DC46 /* Debug */,
+				323E0AC123FD0BA500B6DC46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32925D822421F38D009C5841 /* Build configuration list for PBXNativeTarget "POCAppRTCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32925D832421F38D009C5841 /* Debug */,
+				32925D842421F38D009C5841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 323E0AA323FD0BA100B6DC46 /* Project object */;
+}
