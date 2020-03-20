@@ -456,6 +456,22 @@ window.nativeInterface = {
         }
     },
 
+    // This method is called by the native code for RTC call.
+    handleRTCResponseFromNative: function(response, requestId, keepCallback) {
+        var callback = (this.callbacks[requestId]).bind(this);
+        callback(response);
+        if (callback) {
+            callback(response);
+            if (keepCallback) {
+                // Don't remove the callback
+            }
+            else {
+                // Remove the callback to only let the callback get called once and to free up memory.
+                delete this.callbacks[requestId];
+            }
+        }
+    },
+
     handleResponseHandlerFromNative: function(response, requestId) {
         var handler = (this.handlers[requestId]).bind(this);
         if (handler) {

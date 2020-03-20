@@ -15,9 +15,10 @@ import SafariServices
 class ViewController: UIViewController {
 
     struct Constants {
-//        static let url = "https://www.google.com"
-        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
+        static let url = "https://appr.tc/"
+//        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
 //        static let url = "https://www.webrtc-experiment.com/msr/video-recorder.html"
+//        static let url = "https://webrtc.github.io/samples/src/content/peerconnection/pc1/"
 
         static let jsFileExtension = "js"
 //        static let pluginFileName = "cordova-plugin-iosrtc"
@@ -122,11 +123,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: self, action: #selector(reloadPage))
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Push", style: .plain, target: self, action: #selector(push))
-
-//        let preferences = WKPreferences()
-//        configuration.preferences = preferences
-//        WKPreferencesSetMediaDevicesEnabled(configuration.preferences, true)
 
         createContentController()
         webView = WKWebView(frame: .zero, configuration: configuration)
@@ -222,23 +218,8 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
-//    @objc func push() {
-//        guard let url = URL(string: Constants.url) else {
-//            return
-//        }
-//        let configuration = SFSafariViewController.Configuration()
-//        configuration.barCollapsingEnabled = true
-//        let viewController = SFSafariViewController(url: url, configuration: configuration)
-//        present(viewController, animated: true)
-//    }
-
     func createContentController() {
-        if let script = generateAddCSSScript() {
-          contentController.addUserScript(script)
-        }
-
         let jsFiles = [
-            "script",
             Constants.cordovaPluginFileName,
             Constants.microsoftJSWebModuleName,
             Constants.microsoftJSFileName,
@@ -254,22 +235,6 @@ class ViewController: UIViewController {
         configuration.userContentController = contentController
     }
 
-    func generateAddCSSScript() -> WKUserScript? {
-      guard let cssPath = Bundle.main.path(forResource: "style", ofType: "css"),
-      let cssString = try? String(contentsOfFile: cssPath).components(separatedBy: .newlines).joined() else {
-        return nil
-      }
-
-      let source = """
-      var style = document.createElement('style');
-      style.innerHTML = '\(cssString)';
-      document.head.appendChild(style);
-      """
-
-      let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-      return script
-    }
-
     func getUserScript(_ fileName: String, fileExtension: String) -> WKUserScript? {
         guard let scriptPath = Bundle.main.path(forResource: fileName, ofType: fileExtension),
             let scriptSource = try? String(contentsOfFile: scriptPath) else {
@@ -279,133 +244,6 @@ class ViewController: UIViewController {
         let script = WKUserScript(source: scriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         return script
     }
-
-//    func establishPeerConnection() {
-//        let configuration = RTCConfiguration()
-//        let factory = RTCPeerConnectionFactory()
-//        let constraints = [
-//            kRTCMediaConstraintsOfferToReceiveAudio: kRTCMediaConstraintsValueTrue,
-//            kRTCMediaConstraintsOfferToReceiveVideo: kRTCMediaConstraintsValueTrue
-//        ]
-//        let mediaConstraints = RTCMediaConstraints(mandatoryConstraints: constraints, optionalConstraints: nil)
-//        let peerConnection = factory.peerConnection(with: configuration, constraints: mediaConstraints, delegate: self)
-//
-//        let streamId = UUID().uuidString
-//        stream = factory.mediaStream(withStreamId: streamId) // "audioVideo"
-//        let audioTrackId = UUID().uuidString
-//        let audioTrack = factory.audioTrack(with: factory.audioSource(with: mediaConstraints), trackId: audioTrackId) // "audio"
-//        let videoTrackId = UUID().uuidString
-//        let videoTrack = factory.videoTrack(with: factory.videoSource(), trackId: videoTrackId) // "video"
-//        stream.addAudioTrack(audioTrack)
-//        stream.addVideoTrack(videoTrack)
-//
-//        print("")
-//        createOffer(peerConnection, mediaConstraints)
-//    }
-//
-//    func createOffer(_ peerConnection: RTCPeerConnection, _ mediaConstraints: RTCMediaConstraints) {
-//        peerConnection.offer(for: mediaConstraints) { sdp, error in
-//            guard let sdp = sdp else {
-//                print(error)
-//                return
-//            }
-//            print("sdp: \(sdp)")
-//
-//            self.setLocalDescription(peerConnection, sdp)
-//        }
-//    }
-//
-//    func setLocalDescription(_ peerConnection: RTCPeerConnection, _ sdp: RTCSessionDescription) {
-//        peerConnection.setLocalDescription(sdp) { error in
-//            DispatchQueue.main.async {
-//                let object: [String: String] = [
-//                    "sdp": sdp.sdp,
-//                    "type": RTCSessionDescription.string(for: .offer)
-//                ]
-//                guard let data = try? JSONSerialization.data(withJSONObject: object, options: .prettyPrinted),
-//                    let value = String(data: data, encoding: String.Encoding.ascii) else {
-//                        return
-//                }
-//                let javaScriptString = "RTCPeerConnection(\(value))"
-//                self.webView.evaluateJavaScript(javaScriptString) { data, error in
-//                    print("data: \(data), error: \(error)")
-//                }
-//            }
-//        }
-//    }
-
-    func doSomething() {
-        let pcConfig: [String: Any] = [
-            kRTCMediaConstraintsOfferToReceiveVideo: kRTCMediaConstraintsValueTrue,
-            kRTCMediaConstraintsOfferToReceiveAudio: kRTCMediaConstraintsValueTrue,
-            "iceServers": [
-                [
-                    "url": "stun:stun.stunprotocol.org"
-                ]
-            ]
-        ]
-        let configuration = RTCConfiguration()
-        configuration.shouldPruneTurnPorts = true
-        configuration.candidateNetworkPolicy = RTCCandidateNetworkPolicy.all
-        configuration.tcpCandidatePolicy = .enabled
-        configuration.iceTransportPolicy = .relay
-        let constraints = [
-            kRTCMediaConstraintsOfferToReceiveVideo: kRTCMediaConstraintsValueTrue,
-            kRTCMediaConstraintsOfferToReceiveAudio: kRTCMediaConstraintsValueTrue
-        ]
-        let mediaConstraints = RTCMediaConstraints(mandatoryConstraints: constraints, optionalConstraints: nil)
-        let factory = RTCPeerConnectionFactory()
-        let pc1 = factory.peerConnection(with: configuration, constraints: mediaConstraints, delegate: self)
-        let pc2 = factory.peerConnection(with: configuration, constraints: mediaConstraints, delegate: self)
-
-//        let streamId = UUID().uuidString
-        stream = factory.mediaStream(withStreamId: "audioVideo")
-//        let audioTrackId = UUID().uuidString
-        let audioTrack = factory.audioTrack(with: factory.audioSource(with: mediaConstraints), trackId: "audio")
-//        let videoTrackId = UUID().uuidString
-        let videoTrack = factory.videoTrack(with: factory.videoSource(), trackId: "video")
-        let sender1 = pc1.add(audioTrack, streamIds: ["audio"])
-        let sender2 = pc1.add(videoTrack, streamIds: ["video"])
-
-        stream.addAudioTrack(audioTrack)
-        stream.addVideoTrack(videoTrack)
-
-//        stream.
-
-        createOffer(pc1, mediaConstraints)
-    }
-
-    func createOffer(_ peerConnection: RTCPeerConnection, _ mediaConstraints: RTCMediaConstraints) {
-        peerConnection.offer(for: mediaConstraints) { sdp, error in
-            guard let sdp = sdp else {
-                print(error)
-                return
-            }
-            print("sdp: \(sdp)")
-
-            self.setLocalDescription(peerConnection, sdp)
-        }
-    }
-
-    func setLocalDescription(_ peerConnection: RTCPeerConnection, _ sdp: RTCSessionDescription) {
-        peerConnection.setLocalDescription(sdp) { error in
-            DispatchQueue.main.async {
-                let object: [String: String] = [
-                    "sdp": sdp.sdp,
-                    "type": RTCSessionDescription.string(for: .offer)
-                ]
-                guard let data = try? JSONSerialization.data(withJSONObject: object, options: .prettyPrinted),
-                    let value = String(data: data, encoding: String.Encoding.ascii) else {
-                        return
-                }
-                let javaScriptString = "RTCPeerConnection(\(value))"
-                self.webView.evaluateJavaScript(javaScriptString) { data, error in
-                    print("data: \(data), error: \(error)")
-                }
-            }
-        }
-    }
-
 }
 
 extension ViewController: WKUIDelegate {
@@ -616,42 +454,3 @@ extension ViewController: WKScriptMessageHandler {
     }
 
 }
-
-extension ViewController: RTCPeerConnectionDelegate {
-    func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
-        print("\(#function): \(stateChanged)")
-    }
-
-    func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
-        print("\(#function): \(stream)")
-    }
-
-    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
-        print("\(#function): \(stream)")
-    }
-
-    func peerConnectionShouldNegotiate(_ peerConnection: RTCPeerConnection) {
-        print("\(#function)")
-    }
-
-    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
-        print("\(#function): \(newState)")
-    }
-
-    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
-        print("\(#function): \(newState)")
-    }
-
-    func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
-        print("\(#function): \(candidate)")
-    }
-
-    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
-        print("\(#function): \(candidates)")
-    }
-
-    func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
-        print("\(#function): \(dataChannel)")
-    }
-}
-

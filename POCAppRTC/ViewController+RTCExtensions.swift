@@ -27,10 +27,10 @@ extension ViewController {
 
         // Initialize DTLS stuff.
         RTCInitializeSSL()
-        //RTCSetMinDebugLogLevel(RTCLoggingSeverity.warning)
+        // RTCSetMinDebugLogLevel(RTCLoggingSeverity.warning)
 
         // Create a RTCPeerConnectionFactory.
-        self.initPeerConnectionFactory();
+        self.initPeerConnectionFactory()
 
         // Create a PluginGetUserMedia instance.
         self.pluginGetUserMedia = PluginGetUserMedia(
@@ -54,12 +54,12 @@ extension ViewController {
 
     private func getSupportedVideoEncoder(factory: RTCDefaultVideoEncoderFactory) -> RTCVideoCodecInfo {
         let supportedCodecs: [RTCVideoCodecInfo] = RTCDefaultVideoEncoderFactory.supportedCodecs()
-        if supportedCodecs.contains(RTCVideoCodecInfo.init(name: kRTCH264CodecName)){
-            return RTCVideoCodecInfo.init(name: kRTCH264CodecName)
-        } else if supportedCodecs.contains(RTCVideoCodecInfo.init(name: kRTCVp9CodecName)) {
-            return RTCVideoCodecInfo.init(name: kRTCVp9CodecName)
+        if supportedCodecs.contains(RTCVideoCodecInfo(name: kRTCH264CodecName)) {
+            return RTCVideoCodecInfo(name: kRTCH264CodecName)
+        } else if supportedCodecs.contains(RTCVideoCodecInfo(name: kRTCVp9CodecName)) {
+            return RTCVideoCodecInfo(name: kRTCVp9CodecName)
         } else {
-            return RTCVideoCodecInfo.init(name: kRTCVp8CodecName)
+            return RTCVideoCodecInfo(name: kRTCVp8CodecName)
         }
     }
 
@@ -99,9 +99,9 @@ extension ViewController {
                 )
 
                 // Allow more callbacks.
-                result?.setKeepCallbackAs(true);
+                result?.setKeepCallbackAs(true)
                 self.emit(command.callbackId, result: result!)
-        },
+            },
             eventListenerForAddStream: self.saveMediaStream,
             eventListenerForRemoveStream: self.deleteMediaStream
         )
@@ -127,24 +127,18 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_createOffer() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
             pluginRTCPeerConnection?.createOffer(
                 options,
                 callback: { (data: NSDictionary) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(
-                                status: CDVCommandStatus_OK,
-                                messageAs: data as? [AnyHashable: Any]
-                        )
-                    )
+                    let data = data as? [AnyHashable: Any] ?? [:]
+                    self.emit(command.callbackId, result: .success(data))
                 },
                 errback: { (error: Error) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: error.localizedDescription)
-                    )
+                    self.emit(command.callbackId, result: .failure(error.localizedDescription))
                 }
             )
         }
@@ -164,24 +158,19 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_createAnswer() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
-            pluginRTCPeerConnection?.createAnswer(options,
-                                                  callback: { (data: NSDictionary) -> Void in
-                                                    self.emit(command.callbackId,
-                                                              result: CDVPluginResult(
-                                                                status: CDVCommandStatus_OK,
-                                                                messageAs: data as? [AnyHashable: Any]
-                                                        )
-                                                    )
-            },
-                                                  errback: { (error: Error) -> Void in
-                                                    self.emit(command.callbackId,
-                                                              result: CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: error.localizedDescription)
-                                                    )
-            }
+            pluginRTCPeerConnection?.createAnswer(
+                options,
+                callback: { (data: NSDictionary) -> Void in
+                    let data = data as? [AnyHashable: Any] ?? [:]
+                    self.emit(command.callbackId, result: .success(data))
+                },
+                errback: { (error: Error) -> Void in
+                    self.emit(command.callbackId, result: .failure(error.localizedDescription))
+                }
             )
         }
     }
@@ -195,24 +184,18 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_setLocalDescription() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
             pluginRTCPeerConnection?.setLocalDescription(
                 desc,
                 callback: { (data: NSDictionary) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(
-                                status: CDVCommandStatus_OK,
-                                messageAs: data as? [AnyHashable: Any]
-                        )
-                    )
+                    let data = data as? [AnyHashable: Any] ?? [:]
+                    self.emit(command.callbackId, result: .success(data))
                 },
                 errback: { (error: Error) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: error.localizedDescription)
-                    )
+                    self.emit(command.callbackId, result: .failure(error.localizedDescription))
                 }
             )
         }
@@ -227,24 +210,18 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_setRemoteDescription() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
             pluginRTCPeerConnection?.setRemoteDescription(
                 desc,
                 callback: { (data: NSDictionary) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(
-                                status: CDVCommandStatus_OK,
-                                messageAs: data as? [AnyHashable: Any]
-                        )
-                    )
+                    let data = data as? [AnyHashable: Any] ?? [:]
+                    self.emit(command.callbackId, result: .success(data))
                 },
                 errback: { (error: Error) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: error.localizedDescription)
-                    )
+                    self.emit(command.callbackId, result: .failure(error.localizedDescription))
                 }
             )
         }
@@ -259,24 +236,18 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_addIceCandidate() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
             pluginRTCPeerConnection?.addIceCandidate(
                 candidate,
                 callback: { (data: NSDictionary) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(
-                                status: CDVCommandStatus_OK,
-                                messageAs: data as? [AnyHashable: Any]
-                        )
-                    )
+                    let data = data as? [AnyHashable: Any] ?? [:]
+                    self.emit(command.callbackId, result: .success(data))
                 },
                 errback: { () -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(status: CDVCommandStatus_ERROR)
-                    )
+                    self.emit(command.callbackId, result: .failure(""))
                 }
             )
         }
@@ -292,12 +263,12 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_addStream() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         if pluginMediaStream == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_addStream() | ERROR: pluginMediaStream with id=%@ does not exist", String(streamId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection, weak pluginMediaStream] in
@@ -317,12 +288,12 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_removeStream() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         if pluginMediaStream == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_removeStream() | ERROR: pluginMediaStream with id=%@ does not exist", String(streamId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection, weak pluginMediaStream] in
@@ -334,13 +305,13 @@ extension ViewController {
 
         let pcId = command.argument(at: 0) as! Int
         let trackId = command.argument(at: 1) as! String
-        var streamIds : [String] = [];
+        var streamIds: [String] = []
         let pluginRTCPeerConnection = self.pluginRTCPeerConnections[pcId]
         let pluginMediaStreamTrack = self.pluginMediaStreamTracks[trackId]
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_addTrack() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         if command.argument(at: 2) != nil {
@@ -349,17 +320,17 @@ extension ViewController {
 
             if pluginMediaStream == nil {
                 NSLog("iosrtcPlugin#RTCPeerConnection_addTrack() | ERROR: pluginMediaStream with id=%@ does not exist", String(id))
-                return;
+                return
             }
 
-            let streamId = pluginMediaStream!.rtcMediaStream.streamId;
+            let streamId = pluginMediaStream!.rtcMediaStream.streamId
             streamIds.append(streamId)
             self.saveMediaStream(pluginMediaStream!)
         }
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_addTrack() | ERROR: pluginMediaStreamTrack with id=\(trackId) does not exist")
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection, weak pluginMediaStreamTrack] in
@@ -379,17 +350,17 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_removeTrack() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         if pluginMediaStream == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_removeTrack() | ERROR: pluginMediaStream with id=%@ does not exist", String(streamId))
-            return;
+            return
         }
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_removeTrack() | ERROR: pluginMediaStreamTrack with id=\(trackId) does not exist")
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection, weak pluginMediaStreamTrack] in
@@ -415,7 +386,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_createDataChannel() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
@@ -430,14 +401,14 @@ extension ViewController {
                     )
                     
                     // Allow more callbacks.
-                    result!.setKeepCallbackAs(true);
+                    result!.setKeepCallbackAs(true)
                     self.emit(command.callbackId, result: result!)
                 },
                 eventListenerForBinaryMessage: { (data: Data) -> Void in
                     let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAsArrayBuffer: data)
                     
                     // Allow more callbacks.
-                    result!.setKeepCallbackAs(true);
+                    result!.setKeepCallbackAs(true)
                     self.emit(command.callbackId, result: result!)
                 }
             )
@@ -452,7 +423,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_getStats() | ERROR: pluginRTCPeerConnection with pcId=\(pcId) does not exist")
-            return;
+            return
         }
 
         var pluginMediaStreamTrack: PluginMediaStreamTrack?
@@ -463,28 +434,18 @@ extension ViewController {
 
             if pluginMediaStreamTrack == nil {
                 NSLog("iosrtcPlugin#RTCPeerConnection_getStats() | ERROR: pluginMediaStreamTrack with id=\(trackId) does not exist")
-                return;
+                return
             }
         }
 
         self.queue.async { [weak pluginRTCPeerConnection, weak pluginMediaStreamTrack] in
             pluginRTCPeerConnection?.getStats(
                 pluginMediaStreamTrack,
-                callback: { (array: [[String:Any]]) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(
-                                status: CDVCommandStatus_OK,
-                                messageAs: array as [AnyObject]
-                        )
-                    )
+                callback: { (array: [[String: Any]]) -> Void in
+                    self.emit(command.callbackId, result: .success(array))
                 },
                 errback: { (error: NSError) -> Void in
-                    self.emit(command.callbackId,
-                              result: CDVPluginResult(
-                                status: CDVCommandStatus_ERROR,
-                                messageAs: error.localizedDescription
-                        )
-                    )
+                    self.emit(command.callbackId, result: .failure(error.localizedDescription))
                 }
             )
         }
@@ -498,7 +459,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_close() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
@@ -520,7 +481,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_RTCDataChannel_setListener() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
@@ -533,14 +494,14 @@ extension ViewController {
                     )
 
                     // Allow more callbacks.
-                    result!.setKeepCallbackAs(true);
+                    result!.setKeepCallbackAs(true)
                     self.emit(command.callbackId, result: result!)
                 },
                 eventListenerForBinaryMessage: { (data: Data) -> Void in
                     let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAsArrayBuffer: data)
 
                     // Allow more callbacks.
-                    result!.setKeepCallbackAs(true);
+                    result!.setKeepCallbackAs(true)
                     self.emit(command.callbackId, result: result!)
                 }
             )
@@ -557,7 +518,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_RTCDataChannel_sendString() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
@@ -571,7 +532,7 @@ extension ViewController {
                                 messageAs: data as? [AnyHashable: Any]
                         )
                     )
-            }
+                }
             )
         }
     }
@@ -586,7 +547,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_RTCDataChannel_sendBinary() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
@@ -614,7 +575,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_RTCDataChannel_close() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
@@ -633,14 +594,13 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_createDTMFSender() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_createDTMFSender() | ERROR: pluginMediaStreamTrack with id=%@ does not exist", String(trackId))
-            return;
+            return
         }
-
 
         self.queue.async { [weak pluginRTCPeerConnection] in
             pluginRTCPeerConnection?.createDTMFSender(
@@ -653,7 +613,7 @@ extension ViewController {
                     )
 
                     // Allow more callbacks.
-                    result!.setKeepCallbackAs(true);
+                    result!.setKeepCallbackAs(true)
                     self.emit(command.callbackId, result: result!)
                 }
             )
@@ -672,7 +632,7 @@ extension ViewController {
 
         if pluginRTCPeerConnection == nil {
             NSLog("iosrtcPlugin#RTCPeerConnection_RTCDTMFSender_insertDTMF() | ERROR: pluginRTCPeerConnection with pcId=%@ does not exist", String(pcId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginRTCPeerConnection] in
@@ -709,7 +669,7 @@ extension ViewController {
 
         if pluginMediaStream == nil {
             NSLog("iosrtcPlugin#MediaStream_setListener() | ERROR: pluginMediaStream with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginMediaStream] in
@@ -722,7 +682,7 @@ extension ViewController {
                     )
 
                     // Allow more callbacks.
-                    result!.setKeepCallbackAs(true);
+                    result!.setKeepCallbackAs(true)
                     self.emit(command.callbackId, result: result!)
                 },
                 eventListenerForAddTrack: self.saveMediaStreamTrack,
@@ -746,7 +706,7 @@ extension ViewController {
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#MediaStream_addTrack() | ERROR: pluginMediaStreamTrack with id=%@ does not exist", String(trackId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginMediaStream, weak pluginMediaStreamTrack] in
@@ -769,7 +729,7 @@ extension ViewController {
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#MediaStream_removeTrack() | ERROR: pluginMediaStreamTrack with id=%@ does not exist", String(trackId))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginMediaStream, weak pluginMediaStreamTrack] in
@@ -778,7 +738,7 @@ extension ViewController {
             // TODO only stop if no more pluginMediaStream attached only
             // currently pluginMediaStreamTrack can be attached to more than one pluginMediaStream
             // use track.stop() or stream.stop() to stop tracks
-            //pluginMediaStreamTrack?.stop()
+            // pluginMediaStreamTrack?.stop()
         }
     }
 
@@ -790,7 +750,7 @@ extension ViewController {
 
         if pluginMediaStream == nil {
             NSLog("iosrtcPlugin#MediaStream_release() | ERROR: pluginMediaStream with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         self.pluginMediaStreams[id] = nil
@@ -805,7 +765,7 @@ extension ViewController {
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#MediaStreamTrack_setListener() | ERROR: pluginMediaStreamTrack with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginMediaStreamTrack] in
@@ -818,7 +778,7 @@ extension ViewController {
                     )
 
                     // Allow more callbacks.
-                    result!.setKeepCallbackAs(true);
+                    result!.setKeepCallbackAs(true)
                     self.emit(command.callbackId, result: result!)
                 },
                 eventListenerForEnded: { () -> Void in
@@ -838,7 +798,7 @@ extension ViewController {
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#MediaStreamTrack_setEnabled() | ERROR: pluginMediaStreamTrack with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         self.queue.async {[weak pluginMediaStreamTrack] in
@@ -854,7 +814,7 @@ extension ViewController {
 
         if pluginMediaStreamTrack == nil {
             NSLog("iosrtcPlugin#MediaStreamTrack_stop() | ERROR: pluginMediaStreamTrack with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         self.queue.async { [weak pluginMediaStreamTrack] in
@@ -876,7 +836,7 @@ extension ViewController {
                 )
 
                 // Allow more callbacks.
-                result?.setKeepCallbackAs(true);
+                result?.setKeepCallbackAs(true)
                 self.emit(command.callbackId, result: result!)
             }
         )
@@ -903,7 +863,7 @@ extension ViewController {
 
         if pluginMediaStream == nil {
             NSLog("iosrtcPlugin#MediaStreamRenderer_render() | ERROR: pluginMediaStream with id=%@ does not exist", String(streamId))
-            return;
+            return
         }
 
         pluginMediaStreamRenderer!.render(pluginMediaStream!)
@@ -917,7 +877,7 @@ extension ViewController {
 
         if pluginMediaStreamRenderer == nil {
             NSLog("iosrtcPlugin#MediaStreamRenderer_mediaStreamChanged() | ERROR: pluginMediaStreamRenderer with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         pluginMediaStreamRenderer!.mediaStreamChanged()
@@ -932,7 +892,7 @@ extension ViewController {
 
         if pluginMediaStreamRenderer == nil {
             NSLog("iosrtcPlugin#MediaStreamRenderer_refresh() | ERROR: pluginMediaStreamRenderer with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         pluginMediaStreamRenderer!.refresh(data)
@@ -946,16 +906,11 @@ extension ViewController {
 
         if pluginMediaStreamRenderer == nil {
             NSLog("iosrtcPlugin#MediaStreamRenderer_save() | ERROR: pluginMediaStreamRenderer with id=%@ does not exist", String(id))
-            return;
+            return
         }
 
         let based64 = pluginMediaStreamRenderer!.save()
-        self.emit(command.callbackId,
-                  result: CDVPluginResult(
-                    status: CDVCommandStatus_OK,
-                    messageAs: based64
-            )
-        )
+        self.emit(command.callbackId, result: .success(based64))
     }
 
     @objc(MediaStreamRenderer_close:) func MediaStreamRenderer_close(_ command: CDVInvokedUrlCommand) {
@@ -1048,9 +1003,9 @@ extension ViewController {
             }
 
             if (status) {
-                self.emit(command.callbackId,result: CDVPluginResult(status: CDVCommandStatus_OK))
+                self.emit(command.callbackId, result: .success([:]))
             } else {
-                self.emit(command.callbackId,result: CDVPluginResult(status: CDVCommandStatus_ERROR))
+                self.emit(command.callbackId, result: .failure(""))
             }
         }
     }
@@ -1108,7 +1063,8 @@ extension ViewController {
                 else {
                     return
             }
-            let javaScript = "window.nativeInterface.handleResponseFromNative(\(json), \(callbackId))"
+            let keepCallback = result.keepCallback ?? false
+            let javaScript = "window.nativeInterface.handleRTCResponseFromNative(\(json), \(callbackId), \(keepCallback))"
             self.webView.evaluateJavaScript(javaScript) { data, error in
                 print("data: \(data), error: \(error)")
             }
@@ -1130,7 +1086,7 @@ extension ViewController {
                 else {
                     return
             }
-            let javaScript = "window.nativeInterface.handleResponseFromNative(\(json), \(callbackId))"
+            let javaScript = "window.nativeInterface.handleRTCResponseFromNative(\(json), \(callbackId))"
             self.webView.evaluateJavaScript(javaScript) { data, error in
                 print("data: \(data), error: \(error)")
             }
@@ -1142,7 +1098,7 @@ extension ViewController {
             self.pluginMediaStreams[pluginMediaStream.id] = pluginMediaStream
         } else {
             NSLog("- PluginMediaStreams already exist [id:%@]", String(pluginMediaStream.id))
-            return;
+            return
         }
 
         // Store its PluginMediaStreamTracks' into the dictionary.
