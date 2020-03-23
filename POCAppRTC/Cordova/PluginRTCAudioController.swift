@@ -52,7 +52,7 @@ class PluginRTCAudioController {
             )
         } catch {
             NSLog("PluginRTCAudioController#setCategory() | ERROR \(error)")
-        };
+        }
     }
 
     // Setter function inserted by save specific audio device
@@ -76,7 +76,7 @@ class PluginRTCAudioController {
             NSLog("PluginRTCAudioController:restoreInputOutputAudioDevice: Error setting audioSession preferred input.")
         }
 
-        PluginRTCAudioController.setOutputSpeakerIfNeed(enabled: speakerEnabled);
+        PluginRTCAudioController.setOutputSpeakerIfNeed(enabled: speakerEnabled)
     }
 
     static func setOutputSpeakerIfNeed(enabled: Bool) {
@@ -104,7 +104,7 @@ class PluginRTCAudioController {
                             try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
                         } catch {
                             NSLog("PluginRTCAudioController#setOutputSpeakerIfNeed() | ERROR \(error)")
-                        };
+                        }
                     }
                 }
             }
@@ -117,7 +117,7 @@ class PluginRTCAudioController {
         // Enable speaker
         NSLog("PluginRTCAudioController#selectAudioOutputSpeaker()")
 
-        speakerEnabled = true;
+        speakerEnabled = true
 
         setCategory()
 
@@ -126,14 +126,14 @@ class PluginRTCAudioController {
             try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
         } catch {
             NSLog("PluginRTCAudioController#selectAudioOutputSpeaker() | ERROR \(error)")
-        };
+        }
     }
 
     static func selectAudioOutputEarpiece() {
         // Disable speaker, switched to default
         NSLog("PluginRTCAudioController#selectAudioOutputEarpiece()")
 
-        speakerEnabled = false;
+        speakerEnabled = false
 
         setCategory()
 
@@ -142,7 +142,7 @@ class PluginRTCAudioController {
             try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.none)
         } catch {
             NSLog("PluginRTCAudioController#selectAudioOutputEarpiece() | ERROR \(error)")
-        };
+        }
     }
 
     //

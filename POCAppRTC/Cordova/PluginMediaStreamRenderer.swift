@@ -23,7 +23,7 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
         NSLog("PluginMediaStreamRenderer#init()")
 
         // Open Renderer
-        self.id = UUID().uuidString;
+        self.id = UUID().uuidString
         self.closed = false
 
         // The browser HTML view.
@@ -52,9 +52,9 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
         // https://stackoverflow.com/questions/46317061/use-safe-area-layout-programmatically
         // https://developer.apple.com/documentation/uikit/uiview/2891102-safearealayoutguide
         // https://developer.apple.com/documentation/uikit/
-        let view = self.elementView;
+        let view = self.elementView
         if #available(iOS 11.0, *) {
-            let guide = webView.safeAreaLayoutGuide;
+            let guide = webView.safeAreaLayoutGuide
             view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
             view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
             view.leftAnchor.constraint(equalTo: guide.leftAnchor).isActive = true
@@ -244,7 +244,7 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
         UIGraphicsEndImageContext()
         let imageData = snapshotImageFromMyView?.jpegData(compressionQuality: 1.0)
         let strBase64 = imageData?.base64EncodedString(options: .lineLength64Characters)
-        return strBase64!;
+        return strBase64!
     }
 
     func stop() {

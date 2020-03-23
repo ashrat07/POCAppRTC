@@ -61,12 +61,12 @@ class PluginRTCPeerConnectionConstraints {
         for optionalConstraint in optionalConstraints {
             if (optionalConstraint is NSDictionary) {
                 for (key, value) in optionalConstraint as! NSDictionary {
-                    let finalKey: String = key as! String;
+                    let finalKey: String = key as! String
 
                     // Parse only allowedOptionalConstraints
                     if (allowedOptionalConstraints.firstIndex(of: finalKey) != nil) {
                        if value is Int32 {
-                           _constraints[finalKey] = String(describing: value);
+                           _constraints[finalKey] = String(describing: value)
                        } else if value is Bool {
                            _constraints[finalKey] = value as! Bool ? "true" : "false"
                        } else if value is String {
@@ -77,7 +77,7 @@ class PluginRTCPeerConnectionConstraints {
             }
         }
 
-        return _constraints;
+        return _constraints
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createOffer#RTCOfferOptions_dictionary
@@ -94,7 +94,7 @@ class PluginRTCPeerConnectionConstraints {
 
         for (key, value) in constraints {
             var finalValue: String,
-                finalKey: String = key as! String;
+                finalKey: String = key as! String
 
             if value is Bool {
                 finalValue = value as! Bool ? "true" : "false"
@@ -107,9 +107,9 @@ class PluginRTCPeerConnectionConstraints {
             // Handle Spec for offerToReceiveAudio|offerToReceiveVideo but
             // libwebrtc still use OfferToReceiveAudio|OfferToReceiveVideo
             if (finalKey == "offerToReceiveAudio") {
-                finalKey =  "OfferToReceiveAudio";
+                finalKey =  "OfferToReceiveAudio"
             } else if (finalKey == "offerToReceiveVideo") {
-                finalKey =  "OfferToReceiveVideo";
+                finalKey =  "OfferToReceiveVideo"
             }
 
             // Filter to avoid injection
@@ -118,7 +118,7 @@ class PluginRTCPeerConnectionConstraints {
             }
         }
 
-        return _constraints;
+        return _constraints
     }
 
     deinit {

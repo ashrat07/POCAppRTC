@@ -18,14 +18,14 @@ class PluginMediaStreamTrack : NSObject {
         // Handle possible duplicate remote trackId with janus name
         // See: https://github.com/cordova-rtc/cordova-plugin-iosrtc/issues/432
         if (rtcMediaStreamTrack.trackId.starts(with: "janus")) {
-            self.id = rtcMediaStreamTrack.trackId + "_" + UUID().uuidString;
+            self.id = rtcMediaStreamTrack.trackId + "_" + UUID().uuidString
         } else {
-            self.id = rtcMediaStreamTrack.trackId;
+            self.id = rtcMediaStreamTrack.trackId
         }
 
         self.kind = rtcMediaStreamTrack.kind
         self.renders = [:]
-        self.streamId = streamId;
+        self.streamId = streamId
     }
 
     deinit {
@@ -109,13 +109,13 @@ class PluginMediaStreamTrack : NSObject {
     }
 
     func unregisterRender(render: PluginMediaStreamRenderer) {
-        self.renders.removeValue(forKey: render.id);
+        self.renders.removeValue(forKey: render.id)
     }
 
     func stop() {
         NSLog("PluginMediaStreamTrack#stop() [kind:%@, id:%@]", String(self.kind), String(self.id))
 
-        self.rtcMediaStreamTrack.videoCaptureController?.stopCapture();
+        self.rtcMediaStreamTrack.videoCaptureController?.stopCapture()
 
         // Let's try setEnabled(false), but it also fails.
         self.rtcMediaStreamTrack.isEnabled = false
@@ -123,6 +123,6 @@ class PluginMediaStreamTrack : NSObject {
         for (_, render) in self.renders {
             render.stop()
         }
-        self.renders.removeAll();
+        self.renders.removeAll()
     }
 }

@@ -38,11 +38,11 @@ class PluginRTCPeerConnectionConfig {
          See: https://www.chromestatus.com/feature/5723303167655936
         */
 
-        let sdpSemanticsConfig = pcConfig?.object(forKey: "sdpSemantics") as? String;
+        let sdpSemanticsConfig = pcConfig?.object(forKey: "sdpSemantics") as? String
         let sdpSemantics = (sdpSemanticsConfig != nil && allowedSdpSemantics[sdpSemanticsConfig!] != nil) ?
             allowedSdpSemantics[sdpSemanticsConfig!] : RTCSdpSemantics.unifiedPlan
 
-        rtcConfiguration.sdpSemantics = sdpSemantics!;
+        rtcConfiguration.sdpSemantics = sdpSemantics!
 
         /*
          Specifies how to handle negotiation of candidates when the remote peer is not compatible with the SDP BUNDLE standard.
@@ -53,11 +53,11 @@ class PluginRTCPeerConnectionConfig {
          "max-bundle"    The ICE agent should gather candidates for just one track. If the connection isn't BUNDLE-compatible, then the ICE agent should negotiate just one media track.
          */
 
-        let bundlePolicyConfig = pcConfig?.object(forKey: "bundlePolicy") as? String;
+        let bundlePolicyConfig = pcConfig?.object(forKey: "bundlePolicy") as? String
         let bundlePolicy = (bundlePolicyConfig != nil && allowedBundlePolicy[bundlePolicyConfig!] != nil) ?
                                 allowedBundlePolicy[bundlePolicyConfig!] : RTCBundlePolicy.balanced
 
-        rtcConfiguration.bundlePolicy = bundlePolicy!;
+        rtcConfiguration.bundlePolicy = bundlePolicy!
 
         /*
          An Array of objects of type RTCCertificate which are used by the connection for authentication.
@@ -78,8 +78,8 @@ class PluginRTCPeerConnectionConfig {
          Changing the size of the ICE candidate pool may trigger the beginning of ICE gathering.
          */
 
-        let iceCandidatePoolSizeConfig = pcConfig?.object(forKey: "iceCandidatePoolSize") as? Int32;
-        rtcConfiguration.iceCandidatePoolSize = iceCandidatePoolSizeConfig != nil ? iceCandidatePoolSizeConfig! : 0;
+        let iceCandidatePoolSizeConfig = pcConfig?.object(forKey: "iceCandidatePoolSize") as? Int32
+        rtcConfiguration.iceCandidatePoolSize = iceCandidatePoolSizeConfig != nil ? iceCandidatePoolSizeConfig! : 0
 
         /*
          The current ICE transport policy; this must be one of the values from the RTCIceTransportPolicy enum.
@@ -90,11 +90,11 @@ class PluginRTCPeerConnectionConfig {
          - "relay"     Only ICE candidates whose IP addresses are being relayed, such as those being passed through a TURN server, will be considered.
          */
 
-        let iceTransportPolicyConfig = pcConfig?.object(forKey: "iceTransportPolicy") as? String;
+        let iceTransportPolicyConfig = pcConfig?.object(forKey: "iceTransportPolicy") as? String
         let iceTransportPolicy = (iceTransportPolicyConfig != nil && allowedIceTransportPolicy[iceTransportPolicyConfig!] != nil) ?
                                     allowedIceTransportPolicy[iceTransportPolicyConfig!] : RTCIceTransportPolicy.all
 
-        rtcConfiguration.iceTransportPolicy = iceTransportPolicy!;
+        rtcConfiguration.iceTransportPolicy = iceTransportPolicy!
 
         /*
          The RTCP mux policy to use when gathering ICE candidates, in order to support non-multiplexed RTCP.
@@ -106,11 +106,11 @@ class PluginRTCPeerConnectionConfig {
                          If the remote peer doesn't support RTCP multiplexing, then session negotiation fails.
          */
 
-        let rtcpMuxPolicyConfig = pcConfig?.object(forKey: "rtcpMuxPolicy") as? String;
+        let rtcpMuxPolicyConfig = pcConfig?.object(forKey: "rtcpMuxPolicy") as? String
         let rtcpMuxPolicy = (rtcpMuxPolicyConfig != nil && allowedRtcpMuxPolicy[rtcpMuxPolicyConfig!] != nil) ?
                                 allowedRtcpMuxPolicy[rtcpMuxPolicyConfig!] : RTCRtcpMuxPolicy.require
 
-        rtcConfiguration.rtcpMuxPolicy = rtcpMuxPolicy!;
+        rtcConfiguration.rtcpMuxPolicy = rtcpMuxPolicy!
 
         /*
          A DOMString which specifies the target peer identity for the RTCPeerConnection.
@@ -131,7 +131,7 @@ class PluginRTCPeerConnectionConfig {
                 let urlsConfig = (iceServer.object(forKey: "url") != nil ?
                         iceServer.object(forKey: "url") : iceServer.object(forKey: "urls"))
 
-                let urls = urlsConfig is String ? [urlsConfig as? String ?? ""] : urlsConfig as? [String] ?? nil;
+                let urls = urlsConfig is String ? [urlsConfig as? String ?? ""] : urlsConfig as? [String] ?? nil
                 let username = iceServer.object(forKey: "username") as? String ?? ""
                 let password = iceServer.object(forKey: "credential") as? String ?? ""
 

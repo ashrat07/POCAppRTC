@@ -26,7 +26,7 @@ class PluginEnumerateDevices {
 
         let audioDevices: [MediaDeviceInfo] = getAllAudioDevices()
         let videoDevices: [MediaDeviceInfo] = getAllVideoDevices()
-        let allDevices = videoDevices + audioDevices;
+        let allDevices = videoDevices + audioDevices
 
         let json: NSMutableDictionary = [
             "devices": NSMutableArray()
@@ -58,14 +58,14 @@ fileprivate func getAllVideoDevices() -> [MediaDeviceInfo] {
 
     for device: AVCaptureDevice in videoDevices {
         var facing: String
-        var facingLabel: String;
+        var facingLabel: String
         let hasAudio = device.hasMediaType(AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.audio)))
         let hasVideo = device.hasMediaType(AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
 
         switch device.position {
         case AVCaptureDevice.Position.unspecified:
             facing = "unknown"
-            facingLabel = "";
+            facingLabel = ""
         case AVCaptureDevice.Position.back:
             facing = "back"
             facingLabel = "Back Camera"
@@ -85,7 +85,7 @@ fileprivate func getAllVideoDevices() -> [MediaDeviceInfo] {
         if hasAudio == false {
             // Add English facingLabel suffix if localizedName does not match for facing detection using label
             let deviceLabel = device.localizedName.contains(facingLabel) ?
-                    device.localizedName : device.localizedName + " (" + facingLabel + ")";
+                    device.localizedName : device.localizedName + " (" + facingLabel + ")"
 
             let device = MediaDeviceInfo(
                 deviceId: device.uniqueID,
@@ -97,7 +97,7 @@ fileprivate func getAllVideoDevices() -> [MediaDeviceInfo] {
             if (facing == "front") {
                 // Simple Swift 4 array unshift
                 let videoDevicesArrFirst : [MediaDeviceInfo] = [device]
-                videoDevicesArr = videoDevicesArrFirst + videoDevicesArr;
+                videoDevicesArr = videoDevicesArrFirst + videoDevicesArr
             } else {
                 videoDevicesArr.append(device)
             }
@@ -125,7 +125,7 @@ fileprivate func getAllAudioDevices() -> [MediaDeviceInfo] {
             deviceId: audioInput.uid,
             kind: "audioinput",
             label: audioInput.portName
-        );
+        )
 
         audioDevicesArr.append(device)
 

@@ -122,7 +122,7 @@ class PluginRTCDataChannel : NSObject, RTCDataChannelDelegate {
         //if data channel is created after there is a connection,
         // we need to dispatch its current state.
         if (self.rtcDataChannel?.readyState != RTCDataChannelState.connecting) {
-            dataChannelDidChangeState(self.rtcDataChannel!);
+            dataChannelDidChangeState(self.rtcDataChannel!)
         }
     }
 

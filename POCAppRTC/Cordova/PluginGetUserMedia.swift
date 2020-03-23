@@ -85,7 +85,7 @@ class PluginGetUserMedia {
             rtcVideoTrack = self.rtcPeerConnectionFactory.videoTrack(with: rtcVideoSource!, trackId: UUID().uuidString)
 
             // Handle legacy plugin instance or video: true
-            var videoConstraints : NSDictionary = [:];
+            var videoConstraints : NSDictionary = [:]
             if (!(constraints.object(forKey: "video") is Bool)) {
                videoConstraints = constraints.object(forKey: "video") as! NSDictionary
             }
@@ -128,7 +128,7 @@ class PluginGetUserMedia {
             NSLog("PluginGetUserMedia#call() | audio requested")
 
             // Handle legacy plugin instance or audio: true
-            var audioConstraints : NSDictionary = [:];
+            var audioConstraints : NSDictionary = [:]
             if (!(constraints.object(forKey: "audio") is Bool)) {
                audioConstraints = constraints.object(forKey: "audio") as! NSDictionary
             }
