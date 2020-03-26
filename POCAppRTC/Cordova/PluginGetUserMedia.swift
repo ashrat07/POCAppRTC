@@ -42,34 +42,42 @@ class PluginGetUserMedia {
 
         if videoRequested == true {
             switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
-            case AVAuthorizationStatus.notDetermined:
+            case .notDetermined:
                 NSLog("PluginGetUserMedia#call() | video authorization: not determined")
-            case AVAuthorizationStatus.authorized:
+            case .authorized:
                 NSLog("PluginGetUserMedia#call() | video authorization: authorized")
-            case AVAuthorizationStatus.denied:
+            case .denied:
                 NSLog("PluginGetUserMedia#call() | video authorization: denied")
                 errback("video denied")
                 return
-            case AVAuthorizationStatus.restricted:
+            case .restricted:
                 NSLog("PluginGetUserMedia#call() | video authorization: restricted")
                 errback("video restricted")
+                return
+            @unknown default:
+                NSLog("PluginGetUserMedia#call() | video authorization: unknown")
+                errback("video authorization status unknown")
                 return
             }
         }
 
         if audioRequested == true {
             switch AVCaptureDevice.authorizationStatus(for: AVMediaType.audio) {
-            case AVAuthorizationStatus.notDetermined:
+            case .notDetermined:
                 NSLog("PluginGetUserMedia#call() | audio authorization: not determined")
-            case AVAuthorizationStatus.authorized:
+            case .authorized:
                 NSLog("PluginGetUserMedia#call() | audio authorization: authorized")
-            case AVAuthorizationStatus.denied:
+            case .denied:
                 NSLog("PluginGetUserMedia#call() | audio authorization: denied")
                 errback("audio denied")
                 return
-            case AVAuthorizationStatus.restricted:
+            case .restricted:
                 NSLog("PluginGetUserMedia#call() | audio authorization: restricted")
                 errback("audio restricted")
+                return
+            @unknown default:
+                NSLog("PluginGetUserMedia#call() | audio authorization: unknown")
+                errback("audio authorization status unknown")
                 return
             }
         }

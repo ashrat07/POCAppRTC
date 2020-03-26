@@ -1,5 +1,6 @@
 import Foundation
 import AVFoundation
+import WebKit
 
 //class PluginMediaStreamRenderer : NSObject, RTCEAGLVideoViewDelegate {
 class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
@@ -8,16 +9,17 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
     var eventListener: (_ data: NSDictionary) -> Void
     var closed: Bool
 
-    var webView: UIView
+    var webView: WKWebView
     var elementView: UIView
     var pluginMediaStream: PluginMediaStream?
 
     var videoView: RTCEAGLVideoView
     var rtcAudioTrack: RTCAudioTrack?
     var rtcVideoTrack: RTCVideoTrack?
+    var elementViewFrame: CGRect!
 
     init(
-        webView: UIView,
+        webView: WKWebView,
         eventListener: @escaping (_ data: NSDictionary) -> Void
     ) {
         NSLog("PluginMediaStreamRenderer#init()")
@@ -46,25 +48,6 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
 
         // Place the video element view inside the WebView's superview
         self.webView.addSubview(self.elementView)
-//        self.webView.isOpaque = false
-//        self.webView.backgroundColor = UIColor.clear
-
-        // https://stackoverflow.com/questions/46317061/use-safe-area-layout-programmatically
-        // https://developer.apple.com/documentation/uikit/uiview/2891102-safearealayoutguide
-        // https://developer.apple.com/documentation/uikit/
-        let view = self.elementView
-        if #available(iOS 11.0, *) {
-            let guide = webView.safeAreaLayoutGuide
-            view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-            view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
-            view.leftAnchor.constraint(equalTo: guide.leftAnchor).isActive = true
-            view.rightAnchor.constraint(equalTo: guide.rightAnchor).isActive = true
-        } else {
-            NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: webView, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
-            NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: webView, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
-            NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: webView, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
-            NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: webView, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
-        }
     }
 
     deinit {
@@ -75,6 +58,7 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
         NSLog("PluginMediaStreamRenderer#run()")
 
         self.videoView.delegate = self
+        self.webView.scrollView.delegate = self
     }
 
     func render(_ pluginMediaStream: PluginMediaStream) {
@@ -183,12 +167,13 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
         let videoViewLeft: Double = (elementWidth - videoViewWidth) / 2
         let videoViewTop: Double = (elementHeight - videoViewHeight) / 2
 
-        self.elementView.frame = CGRect(
+        self.elementViewFrame = CGRect(
             x: CGFloat(elementLeft),
             y: CGFloat(elementTop),
             width: CGFloat(elementWidth),
             height: CGFloat(elementHeight)
         )
+        self.elementView.frame = self.elementViewFrame
 
         // NOTE: Avoid a zero-size UIView for the video (the library complains).
         if videoViewWidth == 0 || videoViewHeight == 0 {
@@ -295,4 +280,12 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
             ]
         ])
     }
+}
+
+extension PluginMediaStreamRenderer: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        elementView.frame.origin.y = self.elementViewFrame.minY - scrollView.contentOffset.y
+    }
+
 }

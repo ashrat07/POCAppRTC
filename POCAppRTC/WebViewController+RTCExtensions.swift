@@ -1,5 +1,5 @@
 //
-//  ViewController+RTCExtensions.swift
+//  WebViewController+RTCExtensions.swift
 //  POCAppRTC
 //
 //  Created by Ashish Rathore on 19/03/20.
@@ -12,10 +12,8 @@ extension String: LocalizedError {
     public var errorDescription: String? { return self }
 }
 
-extension ViewController {
+extension WebViewController {
 
-    // This is just called if <param name="onload" value="true" /> in plugin.xml.
-//    @objc(pluginInitialize) override func pluginInitialize() {
     @objc(pluginInitialize) func pluginInitialize() {
         NSLog("iosrtcPlugin#pluginInitialize()")
 
@@ -63,12 +61,10 @@ extension ViewController {
         }
     }
 
-//    @objc(onReset) override func onReset() {
     @objc(onReset) func onReset() {
         NSLog("iosrtcPlugin#onReset() | doing nothing")
     }
 
-//    @objc(onAppTerminate) override func onAppTerminate() {
     @objc(onAppTerminate) func onAppTerminate() {
         NSLog("iosrtcPlugin#onAppTerminate() | doing nothing")
     }
@@ -710,7 +706,7 @@ extension ViewController {
         }
 
         self.queue.async { [weak pluginMediaStream, weak pluginMediaStreamTrack] in
-            pluginMediaStream?.addTrack(pluginMediaStreamTrack!)
+            let _ = pluginMediaStream?.addTrack(pluginMediaStreamTrack!)
         }
     }
 
@@ -733,7 +729,7 @@ extension ViewController {
         }
 
         self.queue.async { [weak pluginMediaStream, weak pluginMediaStreamTrack] in
-            pluginMediaStream?.removeTrack(pluginMediaStreamTrack!)
+            let _ = pluginMediaStream?.removeTrack(pluginMediaStreamTrack!)
 
             // TODO only stop if no more pluginMediaStream attached only
             // currently pluginMediaStreamTrack can be attached to more than one pluginMediaStream
@@ -972,32 +968,37 @@ extension ViewController {
             var status: Bool = true
 
             if videoRequested == true {
-                switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
-                case AVAuthorizationStatus.notDetermined:
+                switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .notDetermined:
                     NSLog("PluginGetUserMedia#call() | video authorization: not determined")
-                case AVAuthorizationStatus.authorized:
+                case .authorized:
                     NSLog("PluginGetUserMedia#call() | video authorization: authorized")
-                case AVAuthorizationStatus.denied:
-
+                case .denied:
                     NSLog("PluginGetUserMedia#call() | video authorization: denied")
                     status = false
-                case AVAuthorizationStatus.restricted:
+                case .restricted:
                     NSLog("PluginGetUserMedia#call() | video authorization: restricted")
+                    status = false
+                @unknown default:
+                    NSLog("PluginGetUserMedia#call() | video authorization: unknown")
                     status = false
                 }
             }
 
             if audioRequested == true {
-                switch AVCaptureDevice.authorizationStatus(for: AVMediaType.audio) {
-                case AVAuthorizationStatus.notDetermined:
+                switch AVCaptureDevice.authorizationStatus(for: .audio) {
+                case .notDetermined:
                     NSLog("PluginGetUserMedia#call() | audio authorization: not determined")
-                case AVAuthorizationStatus.authorized:
+                case .authorized:
                     NSLog("PluginGetUserMedia#call() | audio authorization: authorized")
-                case AVAuthorizationStatus.denied:
+                case .denied:
                     NSLog("PluginGetUserMedia#call() | audio authorization: denied")
                     status = false
-                case AVAuthorizationStatus.restricted:
+                case .restricted:
                     NSLog("PluginGetUserMedia#call() | audio authorization: restricted")
+                    status = false
+                @unknown default:
+                    NSLog("PluginGetUserMedia#call() | audio authorization: unknown")
                     status = false
                 }
             }
@@ -1066,7 +1067,7 @@ extension ViewController {
             let keepCallback = result.keepCallback ?? false
             let javaScript = "window.nativeInterface.handleRTCResponseFromNative(\(json), \(callbackId), \(keepCallback))"
             self.webView.evaluateJavaScript(javaScript) { data, error in
-                print("data: \(data), error: \(error)")
+                print("data: \(String(describing: data)), error: \(String(describing: error))")
             }
         }
     }
@@ -1088,7 +1089,7 @@ extension ViewController {
             }
             let javaScript = "window.nativeInterface.handleRTCResponseFromNative(\(json), \(callbackId))"
             self.webView.evaluateJavaScript(javaScript) { data, error in
-                print("data: \(data), error: \(error)")
+                print("data: \(String(describing: data)), error: \(String(describing: error))")
             }
         }
     }

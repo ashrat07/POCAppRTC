@@ -63,15 +63,18 @@ fileprivate func getAllVideoDevices() -> [MediaDeviceInfo] {
         let hasVideo = device.hasMediaType(AVMediaType(rawValue: convertFromAVMediaType(AVMediaType.video)))
 
         switch device.position {
-        case AVCaptureDevice.Position.unspecified:
+        case .unspecified:
             facing = "unknown"
             facingLabel = ""
-        case AVCaptureDevice.Position.back:
+        case .back:
             facing = "back"
             facingLabel = "Back Camera"
-        case AVCaptureDevice.Position.front:
+        case .front:
             facing = "front"
             facingLabel = "Front Camera"
+        @unknown default:
+            facing = "unknown"
+            facingLabel = ""
         }
 
         if device.isConnected == false || (hasAudio == false && hasVideo == false) {

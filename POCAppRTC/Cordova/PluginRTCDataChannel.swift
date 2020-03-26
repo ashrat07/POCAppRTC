@@ -191,14 +191,16 @@ class PluginRTCDataChannel : NSObject, RTCDataChannelDelegate {
 
     static func stateToString(state: RTCDataChannelState) -> String {
         switch state {
-        case RTCDataChannelState.connecting:
+        case .connecting:
             return "connecting"
-        case RTCDataChannelState.open:
+        case .open:
             return "open"
-        case RTCDataChannelState.closing:
+        case .closing:
             return "closing"
-        case RTCDataChannelState.closed:
+        case .closed:
             return "closed"
+        @unknown default:
+            fatalError()
         }
     }
 

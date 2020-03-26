@@ -89,15 +89,15 @@ class PluginMediaStreamTrack : NSObject {
         if (self.rtcMediaStreamTrack.isEnabled != value) {
             self.rtcMediaStreamTrack.isEnabled = value
             if (value) {
-                self.rtcMediaStreamTrack.videoCaptureController?.startCapture()
+                let _ = self.rtcMediaStreamTrack.videoCaptureController?.startCapture()
             } else {
-                self.rtcMediaStreamTrack.videoCaptureController?.stopCapture()
+                let _ = self.rtcMediaStreamTrack.videoCaptureController?.stopCapture()
             }
         }
     }
 
     func switchCamera() {
-        self.rtcMediaStreamTrack.videoCaptureController?.switchCamera()
+        let _ = self.rtcMediaStreamTrack.videoCaptureController?.switchCamera()
     }
 
     func registerRender(render: PluginMediaStreamRenderer) {
