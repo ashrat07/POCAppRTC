@@ -46,8 +46,8 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
 
         // Place the video element view inside the WebView's superview
         self.webView.addSubview(self.elementView)
-        self.webView.isOpaque = false
-        self.webView.backgroundColor = UIColor.clear
+//        self.webView.isOpaque = false
+//        self.webView.backgroundColor = UIColor.clear
 
         // https://stackoverflow.com/questions/46317061/use-safe-area-layout-programmatically
         // https://developer.apple.com/documentation/uikit/uiview/2891102-safearealayoutguide

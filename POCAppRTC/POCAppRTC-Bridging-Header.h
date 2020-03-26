@@ -2,12 +2,8 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-#import "WebViewController.h"
-
 #import "CDVInvokedUrlCommand.h"
-//#import "CDVPlugin.h"
 #import "CDVPluginResult.h"
-#import "CDVInvokedUrlCommand.h"
 
 #import <WebRTC/RTCAudioSource.h>
 #import <WebRTC/RTCAudioTrack.h>

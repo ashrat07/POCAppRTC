@@ -16,9 +16,7 @@
 		324B845E24208B5600878B6F /* JSWebModule.js in Resources */ = {isa = PBXBuildFile; fileRef = 324B845D24208B5600878B6F /* JSWebModule.js */; };
 		3256F9C2241F808C008BA874 /* CDVPluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3256F9C1241F808B008BA874 /* CDVPluginResult.m */; };
 		3256F9C8241F8333008BA874 /* CDVInvokedUrlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3256F9C7241F8333008BA874 /* CDVInvokedUrlCommand.m */; };
-		326E5698241B54DF00E1480D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326E5697241B54DF00E1480D /* WebViewController.m */; };
 		32925D7E2421F38D009C5841 /* POCAppRTCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32925D7D2421F38D009C5841 /* POCAppRTCTests.swift */; };
-		32925D872421F3C6009C5841 /* WebViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 32925D862421F3C6009C5841 /* WebViewControllerTest.m */; };
 		32925D892422A30C009C5841 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32925D882422A30C009C5841 /* Util.swift */; };
 		3297D048242362140055A79A /* ViewController+RTCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297D047242362140055A79A /* ViewController+RTCExtensions.swift */; };
 		329F4ED2241F5CEE002170FE /* cordova-plugin-iosrtc-fork.js in Resources */ = {isa = PBXBuildFile; fileRef = 329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc-fork.js */; };
@@ -65,13 +63,10 @@
 		3256F9C4241F8143008BA874 /* CDVPluginResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVPluginResult.h; sourceTree = "<group>"; };
 		3256F9C6241F8333008BA874 /* CDVInvokedUrlCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVInvokedUrlCommand.h; sourceTree = "<group>"; };
 		3256F9C7241F8333008BA874 /* CDVInvokedUrlCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVInvokedUrlCommand.m; sourceTree = "<group>"; };
-		326E5696241B549700E1480D /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		326E5697241B54DF00E1480D /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		32925D7B2421F38D009C5841 /* POCAppRTCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = POCAppRTCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32925D7D2421F38D009C5841 /* POCAppRTCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POCAppRTCTests.swift; sourceTree = "<group>"; };
 		32925D7F2421F38D009C5841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32925D852421F3C5009C5841 /* POCAppRTCTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "POCAppRTCTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		32925D862421F3C6009C5841 /* WebViewControllerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewControllerTest.m; sourceTree = "<group>"; };
 		32925D882422A30C009C5841 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		3297D047242362140055A79A /* ViewController+RTCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+RTCExtensions.swift"; sourceTree = "<group>"; };
 		329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc-fork.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "cordova-plugin-iosrtc-fork.js"; sourceTree = "<group>"; };
@@ -147,8 +142,6 @@
 				329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc-fork.js */,
 				329F4ED3241F64E2002170FE /* MicrosoftTeams.js */,
 				324B845D24208B5600878B6F /* JSWebModule.js */,
-				326E5696241B549700E1480D /* WebViewController.h */,
-				326E5697241B54DF00E1480D /* WebViewController.m */,
 				323E0AB423FD0BA100B6DC46 /* Main.storyboard */,
 				323E0AB723FD0BA500B6DC46 /* Assets.xcassets */,
 				323E0AB923FD0BA500B6DC46 /* LaunchScreen.storyboard */,
@@ -173,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				32925D7D2421F38D009C5841 /* POCAppRTCTests.swift */,
-				32925D862421F3C6009C5841 /* WebViewControllerTest.m */,
 				32925D7F2421F38D009C5841 /* Info.plist */,
 				32925D852421F3C5009C5841 /* POCAppRTCTests-Bridging-Header.h */,
 			);
@@ -389,7 +381,6 @@
 				323E0AB123FD0BA100B6DC46 /* SceneDelegate.swift in Sources */,
 				329F4EE8241F6A61002170FE /* PluginRTCVideoCaptureController.swift in Sources */,
 				329F4EEA241F6A61002170FE /* PluginMediaStream.swift in Sources */,
-				326E5698241B54DF00E1480D /* WebViewController.m in Sources */,
 				329F4EEF241F6A61002170FE /* PluginRTCPeerConnectionConfig.swift in Sources */,
 				329F4EE9241F6A61002170FE /* PluginEnumerateDevices.swift in Sources */,
 			);
@@ -400,7 +391,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32925D7E2421F38D009C5841 /* POCAppRTCTests.swift in Sources */,
-				32925D872421F3C6009C5841 /* WebViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

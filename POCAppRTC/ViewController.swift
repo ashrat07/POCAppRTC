@@ -15,10 +15,11 @@ import SafariServices
 class ViewController: UIViewController {
 
     struct Constants {
-        static let url = "https://appr.tc/"
+//        static let url = "https://appr.tc/"
 //        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
 //        static let url = "https://www.webrtc-experiment.com/msr/video-recorder.html"
 //        static let url = "https://webrtc.github.io/samples/src/content/peerconnection/pc1/"
+        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/canvas/"
 
         static let jsFileExtension = "js"
 //        static let pluginFileName = "cordova-plugin-iosrtc"
@@ -211,11 +212,6 @@ class ViewController: UIViewController {
 
     @objc func reloadPage() {
         webView.reload()
-    }
-
-    @objc func push() {
-        let viewController = WebViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func createContentController() {
