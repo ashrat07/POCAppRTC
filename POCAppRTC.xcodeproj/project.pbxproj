@@ -13,6 +13,7 @@
 		323E0AB623FD0BA100B6DC46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323E0AB423FD0BA100B6DC46 /* Main.storyboard */; };
 		323E0AB823FD0BA500B6DC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323E0AB723FD0BA500B6DC46 /* Assets.xcassets */; };
 		323E0ABB23FD0BA500B6DC46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323E0AB923FD0BA500B6DC46 /* LaunchScreen.storyboard */; };
+		3247C446242CF16700EDF429 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 3247C445242CF16700EDF429 /* script.js */; };
 		324B845E24208B5600878B6F /* JSWebModule.js in Resources */ = {isa = PBXBuildFile; fileRef = 324B845D24208B5600878B6F /* JSWebModule.js */; };
 		3256F9C2241F808C008BA874 /* CDVPluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3256F9C1241F808B008BA874 /* CDVPluginResult.m */; };
 		3256F9C8241F8333008BA874 /* CDVInvokedUrlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3256F9C7241F8333008BA874 /* CDVInvokedUrlCommand.m */; };
@@ -58,6 +59,7 @@
 		323E0AB723FD0BA500B6DC46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		323E0ABA23FD0BA500B6DC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		323E0ABC23FD0BA500B6DC46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3247C445242CF16700EDF429 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		324B845D24208B5600878B6F /* JSWebModule.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = JSWebModule.js; sourceTree = "<group>"; };
 		3256F9C1241F808B008BA874 /* CDVPluginResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVPluginResult.m; sourceTree = "<group>"; };
 		3256F9C4241F8143008BA874 /* CDVPluginResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVPluginResult.h; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc.js */,
 				329F4ED3241F64E2002170FE /* MicrosoftTeams.js */,
 				324B845D24208B5600878B6F /* JSWebModule.js */,
+				3247C445242CF16700EDF429 /* script.js */,
 				323E0AB423FD0BA100B6DC46 /* Main.storyboard */,
 				323E0AB723FD0BA500B6DC46 /* Assets.xcassets */,
 				323E0AB923FD0BA500B6DC46 /* LaunchScreen.storyboard */,
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3247C446242CF16700EDF429 /* script.js in Resources */,
 				323E0ABB23FD0BA500B6DC46 /* LaunchScreen.storyboard in Resources */,
 				324B845E24208B5600878B6F /* JSWebModule.js in Resources */,
 				329F4ED4241F64E2002170FE /* MicrosoftTeams.js in Resources */,

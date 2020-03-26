@@ -213,6 +213,7 @@ class WebViewController: UIViewController {
 
     func createContentController() {
         let jsFiles = [
+            "script",
             Constants.cordovaPluginFileName,
             Constants.microsoftJSWebModuleName,
             Constants.microsoftJSFileName,
