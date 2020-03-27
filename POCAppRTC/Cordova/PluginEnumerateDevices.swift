@@ -50,7 +50,7 @@ class PluginEnumerateDevices {
 fileprivate func getAllVideoDevices() -> [MediaDeviceInfo] {
 
     var videoDevicesArr : [MediaDeviceInfo] = []
-    let videoDevices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession.init(
+    let videoDevices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession(
         deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera, AVCaptureDevice.DeviceType.builtInDualCamera],
         mediaType: AVMediaType.video,
         position: AVCaptureDevice.Position.unspecified

@@ -229,7 +229,8 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
         UIGraphicsEndImageContext()
         let imageData = snapshotImageFromMyView?.jpegData(compressionQuality: 1.0)
         let strBase64 = imageData?.base64EncodedString(options: .lineLength64Characters)
-        return strBase64!
+        let imageDataPrefix = "data:image/jpeg;base64,"
+        return imageDataPrefix + strBase64!
     }
 
     func stop() {
@@ -285,7 +286,9 @@ class PluginMediaStreamRenderer : NSObject, RTCVideoViewDelegate {
 extension PluginMediaStreamRenderer: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        elementView.frame.origin.y = self.elementViewFrame.minY - scrollView.contentOffset.y
+        if let elementViewFrame = self.elementViewFrame {
+            elementView.frame.origin.y = elementViewFrame.minY - scrollView.contentOffset.y
+        }
     }
 
 }

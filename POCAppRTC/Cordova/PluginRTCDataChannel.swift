@@ -46,7 +46,7 @@ class PluginRTCDataChannel : NSObject, RTCDataChannelDelegate {
         self.eventListener = eventListener
         self.eventListenerForBinaryMessage = eventListenerForBinaryMessage
 
-        let rtcDataChannelInit = RTCDataChannelConfiguration.init()
+        let rtcDataChannelInit = RTCDataChannelConfiguration()
 
         if options?.object(forKey: "ordered") != nil {
             rtcDataChannelInit.isOrdered = options!.object(forKey: "ordered") as! Bool

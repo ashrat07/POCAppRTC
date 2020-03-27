@@ -18,11 +18,13 @@ class WebViewController: UIViewController {
 //        static let url = "https://www.webrtc-experiment.com/msr/video-recorder.html"
 //        static let url = "https://webrtc.github.io/samples/src/content/peerconnection/pc1/"
         static let url = "https://webrtc.github.io/samples/src/content/getusermedia/canvas/"
+//        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/record/"
 
         static let jsFileExtension = "js"
         static let cordovaPluginFileName = "cordova-plugin-iosrtc"
         static let microsoftJSFileName = "MicrosoftTeams"
         static let microsoftJSWebModuleName = "JSWebModule"
+        static let scriptMessageHandlerName = "listener"
 
         // MediaStream
         static let MEDIA_STREAM_TAG = "iosrtc:MediaStream"
@@ -93,9 +95,7 @@ class WebViewController: UIViewController {
         static let SETUP_DUMP_TAG = "iosrtc:dump"
     }
 
-    var cameraPermissionButton: UIButton!
     let configuration = WKWebViewConfiguration()
-    let contentController = WKUserContentController()
     var webView: WKWebView!
     var stream: RTCMediaStream!
     var count = 0
@@ -127,8 +127,6 @@ class WebViewController: UIViewController {
         webView.uiDelegate = self
         webView.navigationDelegate = self
 
-        loadPage()
-
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -136,67 +134,14 @@ class WebViewController: UIViewController {
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
-        cameraPermissionButton = UIButton(type: .system)
-        cameraPermissionButton.setTitle("Grant Camera Permission", for: .normal)
-        cameraPermissionButton.addTarget(self, action: #selector(askCameraPermissionIfNeeded), for: .touchUpInside)
-        view.addSubview(cameraPermissionButton)
-        cameraPermissionButton.translatesAutoresizingMaskIntoConstraints = false
-        cameraPermissionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        cameraPermissionButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized:
-            showCameraPermissionButton()
-
-        default:
-            showWebView()
-        }
-
+        loadPage()
         pluginInitialize()
     }
 
-    @objc func askCameraPermissionIfNeeded() {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized:
-            // The user has previously granted access to the camera.
-            self.showCameraPermissionButton()
-            self.setupCaptureSession()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
 
-        case .notDetermined:
-            // The user has not yet been asked for camera access.
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    DispatchQueue.main.async {
-                        self.showCameraPermissionButton()
-                        self.setupCaptureSession()
-                    }
-                }
-            }
-
-        case .denied:
-            // The user has previously denied access.
-            return
-
-        case .restricted:
-            // The user can't grant access due to restrictions.
-            return
-        @unknown default:
-            return
-        }
-    }
-
-    func showCameraPermissionButton() {
-        webView.isHidden = false
-        cameraPermissionButton.isHidden = true
-    }
-
-    func showWebView() {
-        webView.isHidden = true
-        cameraPermissionButton.isHidden = false
-    }
-
-    func setupCaptureSession() {
-
+        configuration.userContentController.removeScriptMessageHandler(forName: Constants.scriptMessageHandlerName)
     }
 
     @objc func loadPage() {
@@ -212,6 +157,7 @@ class WebViewController: UIViewController {
     }
 
     func createContentController() {
+        let contentController = WKUserContentController()
         let jsFiles = [
             "script",
             Constants.cordovaPluginFileName,
@@ -223,8 +169,7 @@ class WebViewController: UIViewController {
                 contentController.addUserScript(script)
             }
         }
-
-        contentController.add(self, name: "listener")
+        contentController.add(self, name: Constants.scriptMessageHandlerName)
         configuration.userContentController = contentController
     }
 

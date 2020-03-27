@@ -28,7 +28,7 @@ extension RTCMediaStreamTrack {
 
     var _propClass : PropClass {
         get {
-            let key: UnsafeRawPointer! = UnsafeRawPointer.init(bitPattern:self.hashValue)
+            let key: UnsafeRawPointer! = UnsafeRawPointer(bitPattern:self.hashValue)
             return objc_getx(object: PropClass(), associatedTo: self, withConstPtrKey: key)
         }
     }

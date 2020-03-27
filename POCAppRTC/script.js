@@ -22,7 +22,7 @@ function takeSnapshot() {
     var key = Object.keys(iosrtc.mediaStreamRenderers)[0];
     iosrtc.mediaStreamRenderers[key].save(function(data) {
         var image = new Image();
-        image.src = 'data:image/jpeg;base64,' + data;
+        image.src = data;
         image.onload = function() {
             var canvas = document.querySelector("canvas");
             canvas.width = image.width;

@@ -28,7 +28,7 @@ class PluginRTCPeerConnectionConstraints {
         NSLog("PluginRTCPeerConnectionConstraints#init() | [mandatoryConstraints:%@, optionalConstraints:%@]",
             mandatoryConstraints, optionalConstraints)
 
-        self.constraints = RTCMediaConstraints.init(
+        self.constraints = RTCMediaConstraints(
             mandatoryConstraints: mandatoryConstraints,
             optionalConstraints: optionalConstraints
         )
