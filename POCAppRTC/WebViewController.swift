@@ -13,16 +13,16 @@ import AVKit
 class WebViewController: UIViewController {
 
     struct Constants {
-//        static let url = "https://appr.tc/"
+        static let url = "https://appr.tc/"
 //        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/gum/"
 //        static let url = "https://www.webrtc-experiment.com/msr/video-recorder.html"
 //        static let url = "https://webrtc.github.io/samples/src/content/peerconnection/pc1/"
-        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/canvas/"
+//        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/canvas/"
 //        static let url = "https://webrtc.github.io/samples/src/content/getusermedia/record/"
 
         static let jsFileExtension = "js"
         static let cordovaPluginFileName = "cordova-plugin-iosrtc"
-        static let microsoftJSFileName = "MicrosoftTeams"
+        static let microsoftTeamsJSFileName = "MicrosoftTeams"
         static let microsoftJSWebModuleName = "JSWebModule"
         static let scriptMessageHandlerName = "listener"
 
@@ -160,9 +160,9 @@ class WebViewController: UIViewController {
         let contentController = WKUserContentController()
         let jsFiles = [
             "script",
-            Constants.cordovaPluginFileName,
             Constants.microsoftJSWebModuleName,
-            Constants.microsoftJSFileName,
+            Constants.microsoftTeamsJSFileName,
+            Constants.cordovaPluginFileName,
         ]
         for jsFile in jsFiles {
             if let script = getUserScript(jsFile, fileExtension: Constants.jsFileExtension) {

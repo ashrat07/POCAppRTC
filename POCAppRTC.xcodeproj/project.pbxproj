@@ -141,9 +141,9 @@
 				329AF5B9242CB37100A976D2 /* ViewController.swift */,
 				323E0AB223FD0BA100B6DC46 /* WebViewController.swift */,
 				3297D047242362140055A79A /* WebViewController+RTCExtensions.swift */,
-				329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc.js */,
-				329F4ED3241F64E2002170FE /* MicrosoftTeams.js */,
 				324B845D24208B5600878B6F /* JSWebModule.js */,
+				329F4ED3241F64E2002170FE /* MicrosoftTeams.js */,
+				329F4ED1241F5CED002170FE /* cordova-plugin-iosrtc.js */,
 				3247C445242CF16700EDF429 /* script.js */,
 				323E0AB423FD0BA100B6DC46 /* Main.storyboard */,
 				323E0AB723FD0BA500B6DC46 /* Assets.xcassets */,
@@ -226,7 +226,7 @@
 				323E0AA723FD0BA100B6DC46 /* Sources */,
 				323E0AA823FD0BA100B6DC46 /* Frameworks */,
 				323E0AA923FD0BA100B6DC46 /* Resources */,
-				023183AE2F5943B7AC6115B4 /* [CP] Embed Pods Frameworks */,
+				74746168BB5D7EC55EACEE73 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -320,23 +320,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		023183AE2F5943B7AC6115B4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5BBCD69BA6677FD7899D304E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,6 +340,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74746168BB5D7EC55EACEE73 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-POCAppRTC/Pods-POCAppRTC-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -561,9 +561,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace.poc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "TeamSpace Development";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Team Provisioning Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "POCAppRTC/POCAppRTC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -590,9 +590,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.dmx.teamspace.poc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "TeamSpace Development";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Team Provisioning Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "POCAppRTC/POCAppRTC-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
